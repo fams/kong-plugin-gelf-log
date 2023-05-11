@@ -1,0 +1,19 @@
+ _format_version: "3.0"
+ _transform: true
+
+ services:
+ - url: http://httpbin:80
+   name: httpbin
+   port: 80
+   protocol: http
+   plugins:
+     - name: log-gelf
+       config:
+        application_id: AppFams1AABBCCEE
+        host: gelf
+        port: 12201
+   routes:
+   - name: httpbin
+     paths:
+     - /httpbin
+     strip_path: true
