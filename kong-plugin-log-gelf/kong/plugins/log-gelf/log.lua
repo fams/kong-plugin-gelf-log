@@ -10,18 +10,6 @@ local udp = ngx.socket.udp
 
 
 local _M = {}
- 
-local function getChunks(conf, str)
-  local chunks ={
-    gziped = false,
-    chunks = 0
-  }
-  if len(str)> conf.chunkThreashould then
-    
-  end
-  return chunks
-end
-
 
 function _M.log(premature, conf, gm)
   if premature then
