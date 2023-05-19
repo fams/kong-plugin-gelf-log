@@ -19,7 +19,7 @@ ffi.cdef[[
 ]]
 
 
-function get_id()
+local function get_id()
     -- Generate a random 64-bit unsigned integer
     local id = ffi.cast("uint64_t", math.random(0, 0xFFFFFFFFFFFFFFFF))
   

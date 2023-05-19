@@ -10,5 +10,8 @@ process.on('SIGINT', () => {
   console.info("Interrupted");
   process.exit(0);
 })
-
+process.on('SIGTERM', () => {
+  console.info("Terminated");
+  process.exit(0);
+})
 server.listen(12201)
