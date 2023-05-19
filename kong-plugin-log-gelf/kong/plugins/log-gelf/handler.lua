@@ -24,6 +24,14 @@ local LogGelf = {
 
 local sandbox_opts = { env = { kong = kong, ngx = ngx } }
 local my_message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+function LogGelf:access(conf)
+    if is_json_body(kong.request.get_header("Content-Type")) then
+      local ctx = kong.ctx.gelf_log;
+      ctx.request_body = kong.request.get_raw_body();
+    end
+end
+
 function LogGelf:log(conf)
     -- if conf.custom_fields_by_lua then
     --   local set_serialize_value = kong.log.set_serialize_value

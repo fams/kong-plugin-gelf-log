@@ -9,6 +9,8 @@ local _M = {}
 
 local function get_id()
     local buf = {}
+    local timestamp_mili = socket.gettime()*1000
+    ngx.log(ngx.DEBUG, "timestamp_mili:" .. timestamp_mili)
     for i = 1, 8 do
         buf[#buf+1] = string.format('%x', math.random(0, 0xf))
     end
